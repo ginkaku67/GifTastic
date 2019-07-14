@@ -1,13 +1,19 @@
 /*var newButton = $("#searcBar").val();
-I need to write a function that will take the contents of the search bar and add it as a button with it's own 
+What else do I need to make this grab the value of the text input and make it into a button?
 */
-$( "input" ).on( "blur", function() {
-    $( this ).val(function( i, val ) {
-      return val().trim();
-    });
-  });
+$(document).ready(function() {
+    var topics = [];
+    for(i = 1; i <=10; i++) {
+       $('<button/>', {
+          text: i,
+          id: 'btn_'+i,
+      });
+    }
+  
+  (topics).push("input");
+  $( "button" ).attr( "gifID" );
 
-//pause function
+//pause function that doesn't work. Sable told me something about making 2 seperate variables out of the ajax query url, but didn't have time to experiment with that properly 
 $(".gif").on("click", function() {
     var state = $(this).attr("data-state");
     if (state === "still") {
@@ -20,10 +26,7 @@ $(".gif").on("click", function() {
   });
   
   $("button").on("click", function() {
-    // Grabbing and storing the data-animal property value from the button
     var buttonObject = $(this).attr("gifID");
-
-    // Constructing a queryURL using the animal name
     var queryURL2 = "https://api.giphy.com/v1/gifs/search?q=" +
       buttonObject + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
 
@@ -46,15 +49,15 @@ $(".gif").on("click", function() {
 
           var p = $("<p>").text("Rating: " + results[i].rating);
 
-          var animalImage = $("<img>");
+          var gif = $("<img>");
           
-          animalImage.attr("src", results[i].images.fixed_height.url);
+          gif.attr("src", results[i].images.fixed_height.url);
 
           gifDiv.append(p);
-          gifDiv.append(animalImage);
+          gifDiv.append(gif);
 
           $("#gifs").prepend(gifDiv);
         }
       });
     });
-;
+});
